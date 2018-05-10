@@ -1,0 +1,25 @@
+package com.dp;
+
+public class TowersOfHanoi {
+    public static void solver(int nums, Stack<Integer> from, Stack<Integer> spare, Stack<Integer> target){
+        if (size == 1){
+            target.push(from.pop());
+        }
+        solver(n - 1, from, target, spare);
+        solver(1, from, spare, target);
+        solver(n - 1, spare, from, target);
+    }
+
+    public static void main(String[] args){
+        Stack<Integer> s0 = new Stack<>();
+        Stack<Integer> s1 = new Stack<>();
+        Stack<Integer> s2 = new Stack<>();
+        s0.push(10);
+        s0.push(8);
+        s0.push(7);
+        solver(s0.size, s0, s1, s2);
+        while (!s2.isEmpty()){
+            System.out.print(" " + s2.pop());
+        }
+    }
+}

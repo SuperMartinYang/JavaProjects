@@ -1,0 +1,25 @@
+class Node {
+	Node next = null;
+	int val;
+	public Node(int val){
+		this.val = val;
+	}
+}
+
+public class FindNode_Kth_toLast{
+	public Node find_Kth(Node head, int k){
+		// 1st: two ptrs from the head
+		Node ptr1, ptr2;
+		ptr1 = head;
+		ptr2 = head;
+		while (k > 0 && ptr2 != null)
+			ptr2 = ptr2.next;
+		if (k > 0)
+			return null;
+		while (ptr2 != null){
+			ptr2 = ptr2.next;
+			ptr1 = ptr1.next;
+		}
+		return ptr1;
+	}
+}

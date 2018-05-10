@@ -1,0 +1,30 @@
+public class One_Way{
+	public boolean isOneOK(String s1, String s2){
+		// 1st: change one char in s1, justify whether newS1 == s2
+		/** 2nd: count all char in s1, compare the difference between s1 & s2, if the difference is 1, right O(N + M) */
+		HashMap<Character, Integer> map = new HashMap<>();
+		for (char ch : s1.toCharArray()){
+			if (map.containsKey(ch)){
+				map.put(ch, map.get(ch) + 1);
+			}else {
+				map.put(ch, 1);
+			}
+		}
+		for (char ch2 : s2.toCharArray()){
+			if (map.containsKey(ch2)){
+				map.put(ch2, map.get(ch2) - 1);
+			}else{
+				map.put(ch2, -1);
+			}
+		}
+		Iterator<Integer> it = map.values().iterator();
+		int sum = 0;
+		while (it.hasNext()){
+			sum += Math.abs(it.next());
+		}
+		if (sum == 1){
+			return true;
+		}
+		return false;
+	}
+}

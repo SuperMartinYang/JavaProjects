@@ -1,0 +1,26 @@
+class Node {
+	Node next = null;
+	int val;
+	public Node(int val){
+		this.val = val;
+	}
+}
+
+public class Delete_Middle{
+	public void del_mid(Node head){
+		// 1st: two ptrs (fast & slow)
+		Node fast = head;
+		Node slow = head;
+		while (fast != null && slow != null && fast.next != null){
+			fast = fast.next.next;
+			slow = slow.next;
+		}
+		Node mid = slow;
+		Node pre = head;
+		// find pre of mid
+		while (pre.next != mid){
+			pre = pre.next;
+		}
+		pre.next = mid.next;
+	}
+}

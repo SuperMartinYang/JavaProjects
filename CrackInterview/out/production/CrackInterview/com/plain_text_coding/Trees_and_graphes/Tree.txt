@@ -1,0 +1,8 @@
+class Tree{
+	pulic Node root;
+}
+
+class Node{
+	public String name;
+	public Node[] children;
+}

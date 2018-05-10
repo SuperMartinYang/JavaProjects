@@ -1,0 +1,17 @@
+public class AnimalShelter{
+	
+	public void enqueue(){
+
+	}
+
+	public T dequeueAny(){
+
+	}
+
+	public Dog dequeueDog(){
+
+	}
+	public Cat dequeueCat(){
+
+	}
+}

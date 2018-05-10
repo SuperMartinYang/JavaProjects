@@ -1,0 +1,48 @@
+class Node {
+	Node next = null;
+	int val;
+	public Node(int val){
+		this.val = val;
+	}
+}
+
+public class Sum_Lists{
+	public Node sumLists1(Node head1, Node head2){
+		// two list are back order: (6 -> 5 -> 4) = 456
+		int carry, tmpsum, dig;
+		Node sumlist = new Node(0);
+		Node cur1 = head1, cur2 = head2, cursum = sumlist;
+		while (cur1 != null || cur2 != null){
+			val1 = cur1 == null ? 0 : cur1.val;
+			val2 = cur2 == null ? 0 : cur2.val;
+			tmpsum = val1 + val2 + carry;
+			dig = tmpsum % 10;
+			carry = tmpsum / 10;
+			cursum.next = new Node(dig);
+			cursum = cursum.next;
+			cur1 = cur1 == null ? null : cur1.next;
+			cur2 = cur2 == null ? null : cur2.next;
+		}
+		return sumlist.next;
+	}
+
+	public Node sumLists2(Node head1, Node head2){
+		// two list are fore order: (6 -> 5 -> 4) = 654
+		Node revHead1 = reverseList(head1);
+		Node revHead2 = reverseList(head2);
+		Node res = sumLists1(revHead1, revHead2);
+		return reverseList(res);
+	}
+
+	private Node reverseList(Node head){
+		Node pre = null;
+		Node next;
+		while (head != null){
+			next = head.next;
+			head.next = pre;
+			pre = head;
+			head = next;
+		}
+		return pre;
+	}
+}

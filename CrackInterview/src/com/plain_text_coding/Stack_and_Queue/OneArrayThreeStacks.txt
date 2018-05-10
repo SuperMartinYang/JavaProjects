@@ -1,0 +1,51 @@
+public class MultiStacks{
+	private int stackCapacity;
+	private int stackNumbers = 3;
+	private int[] values;
+	private int[] sizes;
+	public MultiStacks(int stackSize){
+		stackCapacity = stackSize;
+		values = new int[stackCapacity * stackNumbers];
+		sizes = new int[stackNumbers];
+	}
+
+	public int pop(int stackNum){
+		if (isEmpty(stackNum)){
+			System.out.println("Stack " + stackNum + " is Empty!");
+			return;
+		}
+		int topIndex = topOfstackNum(stackNum);
+		int value = values[topIndex];
+		sizes[stackNum] --;
+		values[index] = 0;
+		return value;
+	}
+
+	private int topOfstackNum(int stackNum){
+		return stackNum * stackCapacity + sizes[stackNum]; 
+	}
+
+	public void push(int stackNum, int value){
+		if (isFull(stackNum)){
+			System.out.println("Stack " + stackNum + " is Full!");
+			return;
+		}
+		int topIndex = topOfstackNum(stackNum);
+		topIndex ++;
+		values[topIndex] = value;
+		sizes[stackNum] ++;
+	}
+
+	public int peek(int stackNum){
+		int topIndex = topOfstackNum(stackNum);
+		return values[topIndex];
+	}
+
+	public boolean isEmpty(int stackNum){
+		return sizes[stackNum] == 0;
+	}
+
+	public boolean isFull(int stackNum){
+		return sizes[stackNum] == stackCapacity;
+	}
+}

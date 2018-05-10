@@ -1,0 +1,20 @@
+public class Rotate_Matrix{
+	/**
+	public int[][] rotate_inplace(int[][] matrix){
+
+	}
+	*/
+	public void rotate(int[][] matrix, int N){
+		for (int i = 0; i < N /2; i ++){
+			for (int j = i; j < N - 1 - i; j ++){	// be careful about the boundary
+				int tmp1 = matrix[j][n - i - 1];
+				matrix[j][n - i - 1] = matrix[i][j];
+				int tmp2 = matrix[n - i - 1][n - j - 1];
+				matrix[n - i - 1][n - j - 1] = tmp;
+				tmp1 = matrix[n - j - 1][i];
+				matrix[n - j - 1][i] = tmp2;
+				matrix[i][j] = tmp1;
+			}
+		}
+	}
+}

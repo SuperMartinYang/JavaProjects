@@ -1,0 +1,63 @@
+public class StackMin{
+	private class StackMinNode{
+		private int val;
+		private StackMinNode preMin;
+		private StackMinNode next;
+
+		public StackMinNode(int data){
+			val = data;
+			next = null;
+			preMin = null;
+		}
+	}
+	private int stackSize;
+	private StackMinNode head;
+	private StackMinNode minNode;
+	public StackMin(int size){
+		stackSize = size;
+		head = null;
+		minNode = null;
+	}
+
+	public void push(int value){
+		if (isFull()){
+			System.out.println("Stack is Full!");
+			return;
+		}
+		StackMinNode newNode = new StackMinNode(value);
+		newNode.next = head;
+		head = newNode;
+		if (minNode == null){
+			minNode = newNode;
+		}else if (minNode.val > newNode.val)
+			newNode.preMin = minNode;
+			minNode = newNode;
+		}
+	}
+
+	public int pop(){
+		// TO-DO
+		if (isEmpty()){
+			System.out.println("Stack is Empty!");
+			return;
+		}
+		StackMinNode tmp = head;
+		head = head.next;
+		if (tmp == minNode){
+			tmp = minNode.preMin;
+		}
+		return tmp.val;
+	}
+
+	public int min(){
+		return minNode.val
+	}
+
+	public int peek(){
+		// TO-DO
+	}
+
+	public boolean isEmpty(){
+		// TO-DO
+	}
+}

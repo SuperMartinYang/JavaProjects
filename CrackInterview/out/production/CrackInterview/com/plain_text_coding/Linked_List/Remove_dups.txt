@@ -1,0 +1,31 @@
+class Node{
+	Node next = null;
+	int val;
+	public Node(int val){
+		this.val = val;
+	}
+}
+public class Remove_dups{
+	public Node removeDups(Node head){
+        // 1st: use hashmap (temporary buffer) --> O(N)
+        // 2nd: brute-force, get one, search dups before, no, remain it --> O(N^2)
+        // 3rd: if temporary buffer not allowed, we can first sorted the linked list using merge sort. --> O(N log N)
+        if (head == null)
+            return null;
+        HashMap<Integer, Boolean> map = new HashMap<>();
+        // Put list into Map, skip node which is already existed in hashmap
+        Node cur = head.next;
+        Node res = head;
+        while (cur != null){
+            if (map.containsKey(cur.val))
+                cur = cur.next;
+            else {
+                map.put(cur.val, true);
+                res.next = cur;
+                cur = cur.next;
+                res = res.next;
+            }
+        }
+        return head;
+    }
+}

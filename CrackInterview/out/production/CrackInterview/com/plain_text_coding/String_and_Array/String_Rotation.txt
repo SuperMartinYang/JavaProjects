@@ -1,0 +1,13 @@
+public class String_Rotation{
+	public boolean isRotated(String s1, String s2){
+		// 1st: brute-force, rotate some pivot, check if isSubstring()
+		// 2nd: throw s1 into hash table, then s2 the same as s1 table, rotate and check
+		// 3rd: hash table -> same		-> rotate to the same start -> isSubString
+						   -> not same 
+		// 4th: Clever!!!! Think s1 is xy (which x and y is substring of s1), and s2 is yx, s2 concatenate itself, it will be yxyx, so s1 will be a substring of s2
+		StringBuilder sb = new StringBuilder();
+		sb.append(s2);
+		sb.append(s2);
+		return isSubString(s1, sb.toString());
+	}
+}
