@@ -1,3 +1,5 @@
+package com.musicapp;
+
 import javax.sound.midi.*;
 
 public class MiniMusicApp {
@@ -12,6 +14,7 @@ public class MiniMusicApp {
             Sequence seq = new Sequence(Sequence.PPQ, 4);
             Track t = seq.createTrack();
             ShortMessage a = new ShortMessage();
+            // arg3 -> instrument
             a.setMessage(144, 1, 50, 100);
             MidiEvent noteOn = new MidiEvent(a, 1);
             t.add(noteOn);
@@ -29,8 +32,8 @@ public class MiniMusicApp {
             e.printStackTrace();
         }
     }
-    public static void main(String[] args){
-        MiniMusicApp mini = new MiniMusicApp();
-        mini.play();
-    }
+//    public static void main(String[] args){
+//        MiniMusicApp mini = new MiniMusicApp();
+//        mini.play();
+//    }
 }
